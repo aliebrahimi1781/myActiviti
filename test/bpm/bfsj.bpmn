@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://haodw.org/bfsj">
+  <process id="bfsj" name="bfsj">
+    <startEvent id="startevent" name="Start"></startEvent>
+    <userTask id="claim" name="claim"></userTask>
+    <exclusiveGateway id="exclusivegateway" name="Exclusive Gateway" default="flow4"></exclusiveGateway>
+    <userTask id="reEdit" name="reEdit"></userTask>
+    <userTask id="approve" name="approve"></userTask>
+    <endEvent id="endevent" name="End"></endEvent>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent" targetRef="claim"></sequenceFlow>
+    <sequenceFlow id="flow2" name="" sourceRef="claim" targetRef="exclusivegateway"></sequenceFlow>
+    <sequenceFlow id="flow3" name="N" sourceRef="exclusivegateway" targetRef="reEdit">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input=='N'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow4" name="Y" sourceRef="exclusivegateway" targetRef="approve">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input=='Y'}]]></conditionExpression>
+    </sequenceFlow>
+    <exclusiveGateway id="exclusivegateway1" name="Exclusive Gateway" default="flow9"></exclusiveGateway>
+    <sequenceFlow id="flow8" name="" sourceRef="reEdit" targetRef="exclusivegateway1"></sequenceFlow>
+    <sequenceFlow id="flow9" name="Y" sourceRef="exclusivegateway1" targetRef="claim">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input=='Y'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow10" name="N" sourceRef="exclusivegateway1" targetRef="endevent">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${input=='N'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow11" name="" sourceRef="approve" targetRef="endevent"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_bfsj">
+    <bpmndi:BPMNPlane bpmnElement="bfsj" id="BPMNPlane_bfsj">
+      <bpmndi:BPMNShape bpmnElement="startevent" id="BPMNShape_startevent">
+        <omgdc:Bounds height="35" width="35" x="60" y="140"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="claim" id="BPMNShape_claim">
+        <omgdc:Bounds height="55" width="105" x="140" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway" id="BPMNShape_exclusivegateway">
+        <omgdc:Bounds height="40" width="40" x="300" y="137"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reEdit" id="BPMNShape_reEdit">
+        <omgdc:Bounds height="55" width="105" x="373" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="approve" id="BPMNShape_approve">
+        <omgdc:Bounds height="55" width="105" x="268" y="222"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent" id="BPMNShape_endevent">
+        <omgdc:Bounds height="35" width="35" x="540" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="exclusivegateway1" id="BPMNShape_exclusivegateway1">
+        <omgdc:Bounds height="40" width="40" x="405" y="41"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="95" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="140" y="157"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="245" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="300" y="157"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="340" y="157"></omgdi:waypoint>
+        <omgdi:waypoint x="373" y="157"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="320" y="177"></omgdi:waypoint>
+        <omgdi:waypoint x="320" y="222"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="10" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow8" id="BPMNEdge_flow8">
+        <omgdi:waypoint x="425" y="130"></omgdi:waypoint>
+        <omgdi:waypoint x="425" y="81"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow9" id="BPMNEdge_flow9">
+        <omgdi:waypoint x="405" y="61"></omgdi:waypoint>
+        <omgdi:waypoint x="192" y="60"></omgdi:waypoint>
+        <omgdi:waypoint x="192" y="130"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="82" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow10" id="BPMNEdge_flow10">
+        <omgdi:waypoint x="445" y="61"></omgdi:waypoint>
+        <omgdi:waypoint x="557" y="60"></omgdi:waypoint>
+        <omgdi:waypoint x="557" y="130"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14" width="100" x="-56" y="0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow11" id="BPMNEdge_flow11">
+        <omgdi:waypoint x="373" y="249"></omgdi:waypoint>
+        <omgdi:waypoint x="557" y="249"></omgdi:waypoint>
+        <omgdi:waypoint x="557" y="165"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
