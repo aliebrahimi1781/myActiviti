@@ -4,19 +4,20 @@
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="org.activiti.engine.task.IdentityLink"%>
 <%@page import="java.util.List"%>
-<%@page import="activiti.mgmt.util.ActivitiUtil"%>
+<%@page import="activiti.util.ActivitiUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 String processInsId = request.getParameter("id");
-ProcessDefinition def = ActivitiUtil.getProcessDefinitionByProcessInsId(processInsId);
+ProcessDefinition def = ActivitiUtil.getProcDefByInst(processInsId);
 List<HistoricTaskInstance> tasks = ActivitiUtil.queryTaskByProcessInsId(processInsId);
 %>
 <style>
 .node,.node_finished{filter:alpha(opacity=40);}
 .node{background:yellow;border:2px solid red;};
 </style>
-<img src="../mgmt?m=pdImg&id=<%=def.getId()%>">
-<%for(HistoricTaskInstance task : tasks) {
+<img src="../action/mgmt/ActMgmt/procdefImg?id=<%=def.getId()%>">
+<%
+for(HistoricTaskInstance task : tasks) {
   DiagramNode node = ActivitiUtil.getNodeInProcessDefinition(def.getId(), task.getTaskDefinitionKey());
   boolean finished = (task.getEndTime()!=null);
 %>

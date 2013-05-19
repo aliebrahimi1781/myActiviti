@@ -1,4 +1,4 @@
-package activiti.mgmt.util;
+package activiti.util;
 
 import java.io.InputStream;
 import java.util.List;
@@ -16,10 +16,18 @@ import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.repository.DiagramNode;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.springframework.context.ApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
+import common.AppConfig;
 
 public class ActivitiUtil {
 	
-	public static ProcessEngine processEngine = SpringUtil.getBean(ProcessEngine.class);
+	
+	private static ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(AppConfig.context);
+	
+	
+	public static ProcessEngine processEngine = ctx.getBean(ProcessEngine.class);
 	public static RuntimeService runtimeService = processEngine.getRuntimeService();
 	public static RepositoryService repositoryService = processEngine.getRepositoryService();
 	public static TaskService taskService = processEngine.getTaskService();
@@ -28,7 +36,7 @@ public class ActivitiUtil {
 	public static HistoryService historyService = processEngine.getHistoryService();
 	public static FormService formService = processEngine.getFormService();
 	
-	public static List<ProcessDefinition> queryProcessDefinition(boolean latest) {
+	public static List<ProcessDefinition> listProcdef(boolean latest) {
 		
 		List<ProcessDefinition> list = null;
 		if(latest) {
@@ -40,38 +48,39 @@ public class ActivitiUtil {
 		return list;
 	}
 	
-	public static ProcessDefinition getProcessDefinitionById(String id) {
+	public static ProcessDefinition getProcDef(String procDefId) {
 		ProcessDefinition def = null;
-		def = repositoryService.createProcessDefinitionQuery().processDefinitionId(id).singleResult();
+		def = repositoryService.createProcessDefinitionQuery().processDefinitionId(procDefId).singleResult();
 		return def;
 	}
 	
-	public static ProcessDefinition getProcessDefinitionByProcessInsId(String id){
-		String processDefinitionId = historyService.createHistoricProcessInstanceQuery().processInstanceId(id).singleResult().getProcessDefinitionId();
-		return getProcessDefinitionById(processDefinitionId);
+	public static ProcessDefinition getProcDefByInst(String procInstId){
+		String procDefId = historyService.createHistoricProcessInstanceQuery().processInstanceId(procInstId).singleResult().getProcessDefinitionId();
+		return getProcDef(procDefId);
 	}
 	
-	public static InputStream getProcessDefinitionImgById(String id) {
+	public static InputStream getProcDefImg(String procDefId) {
 		
-		ProcessDefinition def = getProcessDefinitionById(id);
-		InputStream in = repositoryService.getResourceAsStream(def.getDeploymentId(), def.getDiagramResourceName());
+		ProcessDefinition procDef = getProcDef(procDefId);
+		InputStream in = repositoryService.getResourceAsStream(procDef.getDeploymentId(), procDef.getDiagramResourceName());
 		return in;
 		
 	}
 
-	public static InputStream getProcessDefinitionXmlById(String id) {
-		ProcessDefinition def = getProcessDefinitionById(id);
-		InputStream in = repositoryService.getResourceAsStream(def.getDeploymentId(), def.getResourceName());
-		return in;
-	}
-	public static InputStream getProcessDefinitionXmlById(ProcessDefinition def) {
-		InputStream in = repositoryService.getResourceAsStream(def.getDeploymentId(), def.getResourceName());
+	public static InputStream getProcDefXml(String procDefId) {
+		ProcessDefinition procDef = getProcDef(procDefId);
+		InputStream in = repositoryService.getResourceAsStream(procDef.getDeploymentId(), procDef.getResourceName());
 		return in;
 	}
 	
 	public static void deploy(String resourceName, InputStream inputStream) {
 		repositoryService.createDeployment().addInputStream(resourceName, inputStream).deploy();
 	}
+	
+	
+	
+	
+	
 	
 	public static HistoricProcessInstance getProcessInsById(String processInsId) {
 		return historyService.createHistoricProcessInstanceQuery().processInstanceId(processInsId).singleResult();

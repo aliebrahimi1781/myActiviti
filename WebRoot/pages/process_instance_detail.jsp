@@ -7,14 +7,14 @@
 <%@page import="org.apache.commons.lang.StringUtils"%>
 <%@page import="org.activiti.engine.task.IdentityLink"%>
 <%@page import="java.util.List"%>
-<%@page import="activiti.mgmt.util.ActivitiUtil"%>
+<%@page import="activiti.util.ActivitiUtil"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 String processInsId = request.getParameter("id");
 
 HistoricProcessInstance processIns = ActivitiUtil.getProcessInsById(processInsId);
 
-ProcessDefinition def = ActivitiUtil.getProcessDefinitionByProcessInsId(processInsId);
+ProcessDefinition def = ActivitiUtil.getProcDefByInst(processInsId);
 List<HistoricTaskInstance> tasks = ActivitiUtil.queryTaskByProcessInsId(processInsId);
 
 %>
@@ -127,7 +127,6 @@ $(function() {
 </div>
 
 <div id="processDefinition" style="position: relative;">
-<jsp:include page="inc/process_instance_img.jsp"></jsp:include>
 </div>
 
 </body>

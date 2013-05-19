@@ -24,7 +24,7 @@ $(function() {
 </script>
 </head>
 <body>
-<form id="deployForm" name="deployForm" action="../mgmt?m=deploy" method="POST" enctype="multipart/form-data">
+<form id="deployForm" name="deployForm" action="../action/mgmt/ActMgmt/deploy" method="POST" enctype="multipart/form-data">
   <input type="file" name="attach"><br>
   <input type="submit" value="发布">
 </form>

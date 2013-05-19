@@ -1,0 +1,630 @@
+05-19 20:25:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM ACT_RE_PROCDEF 
+SELECT[*] * FROM ACT_RE_DEPLOYMENT "; SQL statement:
+select * from act_re_procdef 
+select * from act_re_deployment [42000-171]
+05-19 20:48:32 jdbc[5]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-171]
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.message.DbException.get(DbException.java:135)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:175)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:120)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:93)
+	at org.h2.Driver.connect(Driver.java:72)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:142)
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:211)
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:136)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1271)
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1325)
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:1215)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-171]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	... 13 more
+05-19 21:10:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ACT_RE_DEPLOYMENT[*] SELECT * FROM ACT_RE_PROCDEF"; expected "ALTER, ANALYZE, {"; SQL statement:
+ACT_RE_DEPLOYMENT SELECT * FROM ACT_RE_PROCDEF [42001-171]
+05-19 23:38:18 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERETABLE_NAME LIKE[*] 'ACT_%' "; SQL statement:
+SELECT * FROM INFORMATION_SCHEMA.TABLES wheretable_name like 'ACT_%' [42000-171]
+05-19 23:38:50 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column "NAME" not found; SQL statement:
+SELECT name  FROM INFORMATION_SCHEMA.TABLES where table_name like 'ACT_%' [42122-171]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:329)
+	at org.h2.message.DbException.get(DbException.java:169)
+	at org.h2.message.DbException.get(DbException.java:146)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:141)
+	at org.h2.command.dml.Select.prepare(Select.java:803)
+	at org.h2.command.Parser.prepareCommand(Parser.java:218)
+	at org.h2.engine.Session.prepareLocal(Session.java:417)
+	at org.h2.engine.Session.prepareCommand(Session.java:366)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:164)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:152)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1312)
+	at org.h2.server.web.WebApp.query(WebApp.java:1002)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:965)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:954)
+	at org.h2.server.web.WebThread.process(WebThread.java:166)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:662)
+05-19 23:40:11 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_RU_VARIABLE 
+DROP[*] TABLE ACT_RE_DEPLOYMENT 
+DROP TABLE ACT_RU_EVENT_SUBSCR 
+DROP TABLE ACT_HI_TASKINST 
+DROP TABLE ACT_RE_PROCDEF 
+DROP TABLE ACT_HI_ACTINST 
+DROP TABLE ACT_ID_INFO 
+DROP TABLE ACT_ID_MEMBERSHIP 
+DROP TABLE ACT_GE_BYTEARRAY 
+DROP TABLE ACT_RU_JOB 
+DROP TABLE ACT_RU_TASK 
+DROP TABLE ACT_HI_VARINST 
+DROP TABLE ACT_RE_MODEL 
+DROP TABLE ACT_ID_GROUP 
+DROP TABLE ACT_HI_PROCINST 
+DROP TABLE ACT_HI_ATTACHMENT 
+DROP TABLE ACT_ID_USER 
+DROP TABLE ACT_HI_COMMENT 
+DROP TABLE ACT_RU_IDENTITYLINK 
+DROP TABLE ACT_HI_DETAIL 
+DROP TABLE ACT_RU_EXECUTION 
+DROP TABLE ACT_GE_PROPERTY "; SQL statement:
+drop table ACT_RU_VARIABLE 
+drop table ACT_RE_DEPLOYMENT 
+drop table ACT_RU_EVENT_SUBSCR 
+drop table ACT_HI_TASKINST 
+drop table ACT_RE_PROCDEF 
+drop table ACT_HI_ACTINST 
+drop table ACT_ID_INFO 
+drop table ACT_ID_MEMBERSHIP 
+drop table ACT_GE_BYTEARRAY 
+drop table ACT_RU_JOB 
+drop table ACT_RU_TASK 
+drop table ACT_HI_VARINST 
+drop table ACT_RE_MODEL 
+drop table ACT_ID_GROUP 
+drop table ACT_HI_PROCINST 
+drop table ACT_HI_ATTACHMENT 
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT 
+drop table ACT_RU_IDENTITYLINK 
+drop table ACT_HI_DETAIL 
+drop table ACT_RU_EXECUTION 
+drop table ACT_GE_PROPERTY [42000-171]
+05-19 23:40:37 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:40:38 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+select 
+    	RES.*     		
+    from ACT_RU_JOB RES    
+    	LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = RES.PROCESS_INSTANCE_ID_
+    where (RES.RETRIES_ > 0)
+      and (RES.DUEDATE_ is null or RES.DUEDATE_ < ?)
+      and (RES.LOCK_OWNER_ is null or RES.LOCK_EXP_TIME_ < ?)
+	  and (
+	  	    (RES.EXECUTION_ID_ is null)
+	  		or 
+	  		(PI.SUSPENSION_STATE_ = 1)
+      )  
+    LIMIT ? OFFSET ? [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:40:41 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:40:48 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+select 
+    	RES.*     		
+    from ACT_RU_JOB RES    
+    	LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = RES.PROCESS_INSTANCE_ID_
+    where (RES.RETRIES_ > 0)
+      and (RES.DUEDATE_ is null or RES.DUEDATE_ < ?)
+      and (RES.LOCK_OWNER_ is null or RES.LOCK_EXP_TIME_ < ?)
+	  and (
+	  	    (RES.EXECUTION_ID_ is null)
+	  		or 
+	  		(PI.SUSPENSION_STATE_ = 1)
+      )  
+    LIMIT ? OFFSET ? [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_COMMENT" not found; SQL statement:
+drop table act_hi_comment [42102-171]
+05-19 23:41:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_USER" not found; SQL statement:
+drop table act_id_user [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_COMMENT" not found; SQL statement:
+drop table act_hi_comment [42102-171]
+05-19 23:41:08 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_USER" not found; SQL statement:
+drop table act_id_user [42102-171]
+05-19 23:41:08 jdbc[2]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+select 
+    	RES.*     		
+    from ACT_RU_JOB RES    
+    	LEFT OUTER JOIN ACT_RU_EXECUTION PI ON PI.ID_ = RES.PROCESS_INSTANCE_ID_
+    where (RES.RETRIES_ > 0)
+      and (RES.DUEDATE_ is null or RES.DUEDATE_ < ?)
+      and (RES.LOCK_OWNER_ is null or RES.LOCK_EXP_TIME_ < ?)
+	  and (
+	  	    (RES.EXECUTION_ID_ is null)
+	  		or 
+	  		(PI.SUSPENSION_STATE_ = 1)
+      )  
+    LIMIT ? OFFSET ? [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_COMMENT" not found; SQL statement:
+drop table act_hi_comment [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_USER" not found; SQL statement:
+drop table act_id_user [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_COMMENT" not found; SQL statement:
+drop table act_hi_comment [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_USER" not found; SQL statement:
+drop table act_id_user [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_VARIABLE" not found; SQL statement:
+drop table ACT_RU_VARIABLE [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_DEPLOYMENT" not found; SQL statement:
+drop table ACT_RE_DEPLOYMENT [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EVENT_SUBSCR" not found; SQL statement:
+drop table ACT_RU_EVENT_SUBSCR [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_TASKINST" not found; SQL statement:
+drop table ACT_HI_TASKINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_PROCDEF" not found; SQL statement:
+drop table ACT_RE_PROCDEF [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ACTINST" not found; SQL statement:
+drop table ACT_HI_ACTINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_INFO" not found; SQL statement:
+drop table ACT_ID_INFO [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_MEMBERSHIP" not found; SQL statement:
+drop table ACT_ID_MEMBERSHIP [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_BYTEARRAY" not found; SQL statement:
+drop table ACT_GE_BYTEARRAY [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_JOB" not found; SQL statement:
+drop table ACT_RU_JOB [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_TASK" not found; SQL statement:
+drop table ACT_RU_TASK [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_VARINST" not found; SQL statement:
+drop table ACT_HI_VARINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RE_MODEL" not found; SQL statement:
+drop table ACT_RE_MODEL [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_GROUP" not found; SQL statement:
+drop table ACT_ID_GROUP [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_PROCINST" not found; SQL statement:
+drop table ACT_HI_PROCINST [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_ATTACHMENT" not found; SQL statement:
+drop table ACT_HI_ATTACHMENT [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP TABLE ACT_ID_USER 
+DROP[*] TABLE ACT_HI_COMMENT "; SQL statement:
+drop table ACT_ID_USER 
+drop table ACT_HI_COMMENT [42000-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_IDENTITYLINK" not found; SQL statement:
+drop table ACT_RU_IDENTITYLINK [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_DETAIL" not found; SQL statement:
+drop table ACT_HI_DETAIL [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_RU_EXECUTION" not found; SQL statement:
+drop table ACT_RU_EXECUTION [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_GE_PROPERTY" not found; SQL statement:
+drop table ACT_GE_PROPERTY [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_HI_COMMENT" not found; SQL statement:
+drop table act_hi_comment [42102-171]
+05-19 23:41:10 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACT_ID_USER" not found; SQL statement:
+drop table act_id_user [42102-171]
