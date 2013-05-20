@@ -12,10 +12,10 @@ import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
-import org.activiti.engine.history.HistoricProcessInstance;
-import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.repository.DiagramNode;
 import org.activiti.engine.repository.ProcessDefinition;
+import org.activiti.engine.runtime.ProcessInstance;
+import org.activiti.engine.task.Task;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -77,30 +77,21 @@ public class ActivitiUtil {
 		repositoryService.createDeployment().addInputStream(resourceName, inputStream).deploy();
 	}
 	
-	
-	
-	
-	
-	
-	public static HistoricProcessInstance getProcessInsById(String processInsId) {
-		return historyService.createHistoricProcessInstanceQuery().processInstanceId(processInsId).singleResult();
+	public static ProcessInstance getProcInst(String procInstId) {
+		return runtimeService.createProcessInstanceQuery().processInstanceId(procInstId).singleResult();
 	}
 	
-	public static List<HistoricTaskInstance> queryTaskByProcessInsId(String processInsId) {
-		
-		return historyService.createHistoricTaskInstanceQuery().processInstanceId(processInsId).list();
+	public static List<Task> queryTaskByProcInst(String procInstId) {
+		return taskService.createTaskQuery().processInstanceId(procInstId).list();
 	}
 	
-	public static DiagramNode getNodeInProcessDefinition(String processDefinitionId, String id){
-		DiagramNode node = repositoryService.getProcessDiagramLayout(processDefinitionId).getNode(id);
+	public static DiagramNode getNodeInProcDef(String procDefId, String id){
+		DiagramNode node = repositoryService.getProcessDiagramLayout(procDefId).getNode(id);
 		return node;
 	}
 
-
-
 	public static void completeTask(String id, Map<String, Object> variables) {
 		taskService.complete(id, variables);
-		
 	}
 	
 

@@ -1,3 +1,4 @@
+<%@page import="org.activiti.engine.task.Task"%>
 <%@page import="org.activiti.engine.history.HistoricTaskInstance"%>
 <%@page import="org.activiti.engine.repository.DiagramNode"%>
 <%@page import="org.activiti.engine.repository.ProcessDefinition"%>
@@ -9,7 +10,7 @@
 <%
 String processInsId = request.getParameter("id");
 ProcessDefinition def = ActivitiUtil.getProcDefByInst(processInsId);
-List<HistoricTaskInstance> tasks = ActivitiUtil.queryTaskByProcessInsId(processInsId);
+List<Task> tasks = ActivitiUtil.queryTaskByProcInst(processInsId);
 %>
 <style>
 .node,.node_finished{filter:alpha(opacity=40);}
@@ -17,9 +18,9 @@ List<HistoricTaskInstance> tasks = ActivitiUtil.queryTaskByProcessInsId(processI
 </style>
 <img src="../action/mgmt/ActMgmt/procdefImg?id=<%=def.getId()%>">
 <%
-for(HistoricTaskInstance task : tasks) {
-  DiagramNode node = ActivitiUtil.getNodeInProcessDefinition(def.getId(), task.getTaskDefinitionKey());
-  boolean finished = (task.getEndTime()!=null);
+for(Task task : tasks) {
+  DiagramNode node = ActivitiUtil.getNodeInProcDef(def.getId(), task.getTaskDefinitionKey());
+  boolean finished = (task.getDueDate()!=null);
 %>
 <div class="node<%=finished?"_finished":"" %>" id="node_<%=task.getId() %>" taskId="<%=task.getId()%>" style="position:absolute;top:<%=node.getY()-1%>px;left:<%=node.getX()-1%>px;width:<%=node.getWidth()%>px;height:<%=node.getHeight()%>px;"></div>
 <%} %>

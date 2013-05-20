@@ -24,5 +24,6 @@ ProcessDefinition def = ActivitiUtil.getProcDef(id);
   
   
   <li><span class="lbl">内容:</span><img src="../action/mgmt/ActMgmt/procdefImg?id=<%=def.getId()%>"></li>
+  <li><span class="lbl"><a href="../action/mgmt/ActMgmt/procdefXml?id=<%=def.getId()%>" target="_blank">下载配置xml</a></li>
 </ul>
 </div>

@@ -42,7 +42,7 @@ $(function() {
 List<ProcessInstance> list = ActivitiUtil.runtimeService.createProcessInstanceQuery().list();
 DateFormat fmt = SimpleDateFormat.getDateTimeInstance();
 %>
-<form action="../action/mgmt/ActTest/startProcessIns?id=<%=procDefId %>" method="post">
+<form action="../action/mgmt/ActMgmt/startProcessIns?id=<%=procDefId %>" method="post">
 <input type="submit" value="开始一个新实例">&nbsp;&nbsp;<input type="text" name="var">
 <table border="1">
   <tr>

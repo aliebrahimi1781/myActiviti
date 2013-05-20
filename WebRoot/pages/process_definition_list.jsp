@@ -13,6 +13,7 @@
 <body>
 
 <a href="process_definition_deploy.jsp">发布新流程</a>
+<a href="task_list.jsp">查看任务</a>
 
 <%
 List<ProcessDefinition> list = ActivitiUtil.listProcdef(true);

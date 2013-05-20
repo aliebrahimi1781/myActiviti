@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +16,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.activiti.engine.repository.ProcessDefinition;
+import org.apache.commons.lang.StringUtils;
 
 import activiti.util.ActivitiUtil;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.oreilly.servlet.MultipartRequest;
 import common.AppConfig;
@@ -27,6 +32,12 @@ public class ActMgmtServlet {
 	}
 	
 
+	/**
+	 * 发布流程定义
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	public void deploy(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 
@@ -49,6 +60,11 @@ public class ActMgmtServlet {
 		}
 	}
 	
+	/**
+	 * 得到流程定义图片
+	 * @param request
+	 * @param response
+	 */
 	public void procdefImg(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		InputStream in = ActivitiUtil.getProcDefImg(id);
@@ -66,6 +82,11 @@ public class ActMgmtServlet {
 
 	}
 
+	/**
+	 * 得到流程定义配置xml
+	 * @param request
+	 * @param response
+	 */
 	public void procdefXml(HttpServletRequest request, HttpServletResponse response) {
 		String id = request.getParameter("id");
 		ProcessDefinition def = ActivitiUtil.getProcDef(id);
@@ -86,6 +107,67 @@ public class ActMgmtServlet {
 			out = null;
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 发起流程实例
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	public void startProcessIns(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String procDefId = request.getParameter("id");
+		String var = request.getParameter("var");
+		Map<String, Object> variables = new HashMap<String, Object>();
+		
+		
+		
+		if(StringUtils.isNotEmpty(var)) {
+			JSONObject json = JSON.parseObject(var);
+			Iterator<String> ite = json.keySet().iterator();
+			while(ite.hasNext()) {
+				String key = ite.next();
+				String value = json.getString(key);
+				variables.put(key, value);
+			}
+		}
+		
+		ActivitiUtil.runtimeService.startProcessInstanceById(procDefId, variables);
+		response.sendRedirect(request.getContextPath() + "/pages/process_instance_list.jsp?id="+procDefId);
+	}
+	
+	/**
+	 * 完成任务
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
+	public void completeTask(HttpServletRequest request,
+			HttpServletResponse response) throws IOException {
+		String id = request.getParameter("id");
+		String var = request.getParameter("var");
+		Map<String, Object> variables = new HashMap<String, Object>();
+		
+		if(StringUtils.isNotEmpty(var)) {
+			JSONObject json = JSON.parseObject(var);
+			Iterator<String> ite = json.keySet().iterator();
+			while(ite.hasNext()) {
+				String key = ite.next();
+				String value = json.getString(key);
+				variables.put(key, value);
+			}
+		}
+		
+		JSONObject json = new JSONObject();
+		try {
+			ActivitiUtil.completeTask(id, variables);
+			json.put("success", true);
+		} catch(Exception e) {
+			json.put("success", false);
+			json.put("msg", e.getMessage());
+		} finally {
+			response.getWriter().write(json.toString());
 		}
 	}
 

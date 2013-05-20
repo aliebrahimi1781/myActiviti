@@ -1,3 +1,5 @@
+<%@page import="org.activiti.engine.task.Task"%>
+<%@page import="org.activiti.engine.runtime.ProcessInstance"%>
 <%@page import="org.activiti.engine.history.HistoricProcessInstance"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -12,10 +14,10 @@
 <%
 String processInsId = request.getParameter("id");
 
-HistoricProcessInstance processIns = ActivitiUtil.getProcessInsById(processInsId);
+ProcessInstance processIns = ActivitiUtil.getProcInst(processInsId);
 
 ProcessDefinition def = ActivitiUtil.getProcDefByInst(processInsId);
-List<HistoricTaskInstance> tasks = ActivitiUtil.queryTaskByProcessInsId(processInsId);
+List<Task> tasks = ActivitiUtil.queryTaskByProcInst(processInsId);
 
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,7 +50,7 @@ width:80px;
 <script type="text/javascript" src="../include/jquery/ux/poshytip/1.1/jquery.poshytip.min.js"></script>
 <script>
 function completeTask(taskId) {
-	$.post('../test?m=completeTask', {id:taskId,"var":$("#var").val()}, function(data) {
+	$.post('../action/mgmt/ActMgmt/completeTask', {id:taskId,"var":$("#var").val()}, function(data) {
 		if(data.success) {
 			
 			location.reload();
@@ -62,7 +64,7 @@ function completeTask(taskId) {
 
 $(function() {
 	$('#processDefinition').load('inc/process_instance_img.jsp?id=<%=processInsId%>',null,function() {
-		<%if(processIns.getEndTime()==null) {%>
+		<%if(!processIns.isEnded()) {%>
 		$('#processDefinition .node').poshytip({
 			className: 'tip-twitter',
 			content : function() {
@@ -86,9 +88,9 @@ $(function() {
 <body>
 <input type="text" id="var" name="var">
 <div id="tasks" class="detail">
-<%for(HistoricTaskInstance task : tasks) {
+<%for(Task task : tasks) {
   List<IdentityLink> links = null;
-  boolean finished = (task.getEndTime()!=null);
+  boolean finished = (task.getDueDate()!=null);
   if(finished) {
 	  links = new ArrayList();
   } else {
@@ -99,8 +101,8 @@ $(function() {
 <ul>
   <li><span class="lbl">id:</span><%=task.getId() %></li>
   <li><span class="lbl">name:</span><%=task.getName() %></li>
-  <li><span class="lbl">starttime:</span><%=SimpleDateFormat.getDateTimeInstance().format(task.getStartTime()) %></li>
-  <li><span class="lbl">endtime:</span><%=task.getEndTime()==null?"":SimpleDateFormat.getDateTimeInstance().format(task.getEndTime()) %></li>
+  <li><span class="lbl">CreateTime:</span><%=SimpleDateFormat.getDateTimeInstance().format(task.getCreateTime()) %></li>
+  <li><span class="lbl">DueDate:</span><%=task.getDueDate()==null?"":SimpleDateFormat.getDateTimeInstance().format(task.getDueDate()) %></li>
   <li><span class="lbl">description:</span><%=task.getDescription() %></li>
   
   <%if(!finished){ %>
